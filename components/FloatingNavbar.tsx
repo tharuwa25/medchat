@@ -1,6 +1,6 @@
 
 // import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
-export function () {
+export function FloatingNavbar() {
   const navItems = [
     {
       name: "Home",
