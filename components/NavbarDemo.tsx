@@ -16,12 +16,13 @@ export function NavbarDemo() {
 
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
+  const [showProfileMenu, setShowProfileMenu] = useState(false); // State to toggle profile menu
 
   const handleMenuItemClick = (item: string) => {
     setActive(item);
-    
-    if (item === "CHAT") {
-      <HoveredLink href="/hobby">Hobby</HoveredLink>
+
+    if (item === "PROFILE") {
+      setShowProfileMenu((prev) => !prev); // Toggle the profile menu
     }
   };
 
@@ -30,22 +31,23 @@ function Navbar({ className }: { className?: string }) {
       className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50 font-bold text-white", className)}
     >
       <Menu setActive={setActive}>
-        {/* <MenuItem setActive={() => handleMenuItemClick("HOME")} active={active} item="HOME" />
-        <MenuItem setActive={() => handleMenuItemClick("CHAT")} active={active} item="CHAT" />
-        <MenuItem setActive={() => handleMenuItemClick("MY CHATS")} active={active} item="MY CHATS" />
-        <MenuItem setActive={() => handleMenuItemClick("BLOG")} active={active} item="BLOG" />
-        <MenuItem setActive={() => handleMenuItemClick("CONTACT")} active={active} item="CONTACT" /> */}
         <HoveredLink href="/">HOME</HoveredLink>
         <HoveredLink href="/chat">CHAT</HoveredLink>
         <HoveredLink href="/mychat">MY CHATS</HoveredLink>
         <HoveredLink href="/blog">BLOG</HoveredLink>
         <HoveredLink href="/contact">CONTACT</HoveredLink>
+
+        {/* The Profile menu item that toggles additional options */}
         <MenuItem setActive={() => handleMenuItemClick("PROFILE")} active={active} item="PROFILE">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">Hobby</HoveredLink>
-            <HoveredLink href="/individual">Individual</HoveredLink>
-            <HoveredLink href="/team">Team</HoveredLink>
-            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+            {showProfileMenu && (
+              <>
+                <HoveredLink href="/hobby">Hobby</HoveredLink>
+                <HoveredLink href="/individual">Individual</HoveredLink>
+                <HoveredLink href="/team">Team</HoveredLink>
+                <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+              </>
+            )}
           </div>
         </MenuItem>
       </Menu>
