@@ -14,8 +14,6 @@ const MySymptoms = () => {
   const [result, setResult] = useState<string>();
   const symptomsData = intenseData.symptoms;
 
-  const disease1 = disease
-
   console.log('symptomsData', symptomsData)
   console.log('diseaes disease', disease)
 
@@ -92,11 +90,11 @@ const router = useRouter();
       console.log('data', data)
       setResult(data.predicted_disease); // Assuming data.result contains the result
       console.log('result', data.predicted_disease)
-      handleResultPage(data.predicted_disease, disease1);
+      handleResultPage(data.predicted_disease, disease);
 };
 
 const handleResultPage = (result: string) => {
-  router.push(`/results?result=${result}&disease=${disease1}`);
+  router.push(`/results?result=${result}&disease=${disease}`);
 };
 
   const getSymptomDescription = (symptom: string) => {
