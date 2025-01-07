@@ -4,8 +4,7 @@ import { PlaceholdersAndVanishInput } from '@/components/ui/placeholders-and-van
 import Spline from '@splinetool/react-spline';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { MouseEvent } from 'react';
-
+import { FormEvent } from 'react';
 
 const FindSymptoms = () => {
 
@@ -42,7 +41,7 @@ const FindSymptoms = () => {
     console.log('message', message);
   };
 
-  const getSymptom = async (e:MouseEvent) => {
+  const getSymptom = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     getSentence();
