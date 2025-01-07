@@ -93,7 +93,7 @@ const router = useRouter();
       handleResultPage(data.predicted_disease, disease);
 };
 
-const handleResultPage = (result: string) => {
+const handleResultPage = (result: string, disease: string) => {
   router.push(`/results?result=${result}&disease=${disease}`);
 };
 
