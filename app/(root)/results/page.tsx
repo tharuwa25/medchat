@@ -45,9 +45,15 @@ const Results = () => {
 
     useEffect(() => {
         // Only runs on the client side
-        const savedDetails = JSON.parse(localStorage.getItem('details'));
-        setOther(savedDetails);
-
+        const savedDetails = localStorage.getItem('details');
+        
+        // Check if savedDetails is not null before parsing
+        if (savedDetails) {
+            setOther(JSON.parse(savedDetails));
+        } else {
+            setOther(null);  // Handle the case where no details are stored
+        }
+    
         displayResult();
     }, []);
 
