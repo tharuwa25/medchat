@@ -66,10 +66,9 @@ const MySymptoms = () => {
 
 const router = useRouter();
 
-  const handleSubmit = async() => {
-    console.log('Selected Symptoms:', selectedSymptoms); // You can handle further logic here
-    //const cleanedSymptoms = selectedSymptoms.map(symptom => symptom.replace(/_/g, ' ').trim());
-    const cleanedSymptoms =  selectedSymptoms.join(", "); // Convert array to comma-separated string
+const handleSubmit = async () => {
+  console.log('Selected Symptoms:', selectedSymptoms); // You can handle further logic here
+  const cleanedSymptoms = selectedSymptoms.join(", "); // Convert array to comma-separated string
 
    //// const cleanedSymptoms = selectedSymptoms.map(symptom => {
       // Now you can directly use .map() because selectedSymptoms is an array
@@ -90,7 +89,11 @@ const router = useRouter();
       console.log('data', data)
       setResult(data.predicted_disease); // Assuming data.result contains the result
       console.log('result', data.predicted_disease)
-      handleResultPage(data.predicted_disease, disease);
+      
+       // Handle disease being null
+  const diseaseToPass = disease ?? 'Unknown Disease'; // Fallback to 'Unknown Disease' if disease is null
+  handleResultPage(data.predicted_disease, diseaseToPass);
+
 };
 
 const handleResultPage = (result: string, disease: string) => {
