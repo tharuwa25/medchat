@@ -1,5 +1,4 @@
-"use client";
-import React from "react";
+
 // import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 export function () {
   const navItems = [
