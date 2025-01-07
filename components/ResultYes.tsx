@@ -4,7 +4,7 @@ import { BackgroundGradient } from './ui/background-gradient';
 
 interface ResultProps {
     diseaes: string,
-    disc: string[]
+    disc: string
     prevention:string[]
 }
 

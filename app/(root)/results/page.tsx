@@ -34,12 +34,14 @@ const Results = () => {
             });
     
             const data = await res.json();
-            console.log('data.description', data.description)
             setDisc(data.desc);
-            setPrevetion(data.prevntion_list);
+            
+            // Ensure prevention is always an array of strings
+            const preventionList = Array.isArray(data.prevntion_list) ? data.prevntion_list : [];
+            setPrevetion(preventionList);
+            
             updateAllergy();
-            console.log('prevention', data.prevntion_list);
-            setLoading(true)
+            setLoading(true);
         }
     };
 
