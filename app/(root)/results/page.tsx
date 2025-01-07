@@ -59,16 +59,19 @@ const Results = () => {
 
     const updateAllergy = () => {
         // Retrieve the current details from localStorage
-        const savedDetails = JSON.parse(localStorage.getItem('details')) || {};
-
+        const savedDetails = localStorage.getItem('details');
+        
+        // Parse the details or fallback to an empty object if null
+        const parsedDetails = savedDetails ? JSON.parse(savedDetails) : {};
+    
         // Update the 'Allergy' value to false without losing other values
-        savedDetails['Allergy'] = false;
-
+        parsedDetails['Allergy'] = false;
+    
         // Save the updated details back to localStorage
-        localStorage.setItem('details', JSON.stringify(savedDetails));
-
+        localStorage.setItem('details', JSON.stringify(parsedDetails));
+    
         // Update the state to reflect changes
-        setOther(savedDetails);
+        setOther(parsedDetails);
     };
 
     return (
