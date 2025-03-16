@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import intenseData from './intense.json';
-import { ToggleGroup, ToggleGroupItem } from '@/app/components/ui/toggle-group';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 const MySymptoms = () => {
   const [disease, setDisease] = useState<string | null>(null);
