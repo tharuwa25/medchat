@@ -46,7 +46,7 @@ const FindSymptoms = () => {
 
     getSentence();
 
-    const res= await fetch('http://127.0.0.1:5000/get_sentence', {
+    const res= await fetch('https://tharudila245.pythonanywhere.com/get_sentence', {
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json',
@@ -66,7 +66,7 @@ const FindSymptoms = () => {
 
     console.log('transformedMessage 3️⃣', transformedMessage)
 
-    const res2 = await fetch('http://127.0.0.1:5000/get_diseases_name', {
+    const res2 = await fetch('https://tharudila245.pythonanywhere.com/get_diseases_name', {
       method: 'POST',
       headers:{
         'Content-Type' : 'application/json',
