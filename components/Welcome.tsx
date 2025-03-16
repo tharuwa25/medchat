@@ -29,7 +29,7 @@ export function Welcome() {
           MEDCHAT
         </div>
         <div className="font-extralight text-base md:text-4xl dark:text-neutral-200 py-4">
-          CHeck your symptom today ! 
+        Your symptoms, analyzed instantly. 
         </div>
         {/* <button className="bg-blue-800 dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
           TRY NOW
