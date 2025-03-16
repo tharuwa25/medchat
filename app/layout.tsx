@@ -23,7 +23,7 @@ const links = [
     icon: (
       <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "http://localhost:3000",
+    href: "https://tharuwa25.github.io/medchat",
   },
 
   {
@@ -31,14 +31,14 @@ const links = [
     icon: (
       <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "http://localhost:3000/find-symptom",
+    href: "https://tharuwa25.github.io/medchat/find-symptom",
   },
   {
     title: "How it work",
     icon: (
       <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "http://localhost:3000/help",
+    href: "https://tharuwa25.github.io/medchat/help",
   },
   {
     title: "Other",
