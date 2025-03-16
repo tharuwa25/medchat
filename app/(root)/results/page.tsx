@@ -1,10 +1,11 @@
 'use client';  // Add this line at the top
 
 import { Suspense } from 'react';
-import ResultNo from '@/app/components/ResultNo';
-import ResultYes from '@/app/components/ResultYes';
+
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState } from 'react';
+import ResultNo from '@/components/ResultNo';
+import ResultYes from '@/components/ResultYes';
 
 const Results = () => {
     const searchParams = useSearchParams();
