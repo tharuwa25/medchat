@@ -2,6 +2,7 @@
 import InputBox2 from '@/components/InputBox2'
 import { PlaceholdersAndVanishInput } from '@/components/ui/placeholders-and-vanish-input';
 import Spline from '@splinetool/react-spline';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { FormEvent } from 'react';
@@ -9,10 +10,10 @@ import { FormEvent } from 'react';
 const FindSymptoms = () => {
 
   const[loading, setLoading] = useState(false);
-
   const[message, setMessage] = useState('');
   const[symptom, setSymptom] = useState('');
   const[diseases, setDiseases] = useState([]); // Added disease state
+  const [error, setError] = useState('');
 
 
   const router = useRouter();
@@ -29,7 +30,6 @@ const FindSymptoms = () => {
 
   const placeholders = [
     "My sore throat is making it really uncomfortable to eat or drink anything.",
-    "Who is Tyler Durden?",
     "I can’t seem to get warm, no matter how many blankets I use to cover myself.",
     "I keep sneezing uncontrollably, and it feels like it’s never going to stop.",
     "My throat feels dry and scratchy, which makes me cough uncontrollably.",
@@ -104,109 +104,71 @@ const FindSymptoms = () => {
     router.push(`/my-symptoms?disease=${encodeURIComponent(item)}`);
   };
 
-  
+  const ErrorModal = ({ message, onClose }: { message: string; onClose: () => void }) => {
+    return (
+      <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+        <div className="bg-white p-8 rounded-md w-96 relative">
+          <p className="text-red-500">{message}</p>
+          
+          {/* Close icon in the top-right corner */}
+          <span
+            onClick={onClose}
+            className="absolute top-2 right-2 cursor-pointer text-2xl text-gray-600 hover:text-gray-800"
+          >
+            &times; {/* This is the "X" icon for close */}
+          </span>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className='bg-bgColor-400 h-screen py-16'>
+    <div className="bg-bgColor-700 h-screen py-16">
+      <h4 className="font-bold text-3xl text-white mb-6 items-center text-center">{randomText}</h4>
 
-      <h4 className='font-bold text-3xl text-black mb-6 items-center text-center'>{randomText}</h4>
-
-      {/* <InputBox2 onSendMessage={handleSendMessage}/> */}
-
-
-      {/* <div className="flex"> */}
-      {/* <form className="flex flex-row p-6 mt-auto w-full">
-        <div className='w-10/12 border-none'>
-          <input
-            type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Type your message..."
-            className="flex-1 p-4 rounded-s w-full bg-white text-black"
-          />
-
-        </div>
-        <div className='border-none'>
-        <button
-        type="submit"
-        className="p-4 bg-blue-500 text-white rounded-r"
-        onClick={getSymptom}
-      >
-        Submit
-        </button>
-        </div>
-      </form> */}
       <PlaceholdersAndVanishInput
         placeholders={placeholders}
-       // onChange={handleChange}
-       onChange={(e) => setMessage(e.target.value)}
-        //onSubmit={onSubmit}
+        onChange={(e) => setMessage(e.target.value)}
         onSubmit={getSymptom}
-        
       />
-    {/* </div> */}
 
-    {loading ? (
-        <div className='bg-bgColor-300 m-12 mt-20 rounded-md p-4'>
-          <h5 className='font-bold text-2xl text-black mb-6 text-center mt-6'>
-          Based on your symptoms, you may have one of these conditions.
+      {loading && (
+        <div className="bg-bgColor-300 m-12 mt-20 rounded-md p-4">
+          <h5 className="font-bold text-2xl text-black mb-6 text-center mt-6">
+            Based on your symptoms, you may have one of these conditions.
           </h5>
-    
-          <div className='bg-bgColor-200 p-8 border-black rounded-sm border-2 ml-16 mr-16 text-center'>
-
+          <div className="bg-bgColor-200 p-8 border-black rounded-sm border-2 ml-16 mr-16 text-center">
             {diseases.map((item, index) => (
-              <>
-              <button key={index} className='bg-white p-4 text-xl rounded-xl mr-8 hover:bg-slate-400' onClick={() => handleNextPage(item)}>
-              {item}
-            </button>
-              </>
+              <button
+                key={index}
+                className="bg-white p-4 text-xl rounded-xl mr-8 hover:bg-slate-400"
+                onClick={() => handleNextPage(item)}
+              >
+                {item}
+              </button>
             ))}
-
           </div>
-
-          <h5 className='font-bold text-2xl text-black mb-6 text-center mt-6'>
-           To get a more accurate diagnosis, we recommend to click on a illness.
+          <h5 className="font-bold text-2xl text-black mb-6 text-center mt-6">
+            To get a more accurate diagnosis, we recommend clicking on an illness.
           </h5>
-
-        </div>) 
-      : (<>
-      </>)}
-
-      {!loading ? (
-        <div className="w-full hidden sm:block">
-        <Spline
-          className="spline 
-            md:spline-024 
-            sm:spline-100 
-            xs:spline-200 
-            xxs:spline-75
-            mr-10 absolute top-10 left-15"
-            scene="https://prod.spline.design/ZCJFcd6hmEDt89SB/scene.splinecode" 
-        />
-         <Spline
-          className="spline 
-            md:spline-1024 
-            sm:spline-100 
-            xs:spline-200 
-            xxs:spline-375
-            mr-10 absolute top-10 right-0"
-            scene="https://prod.spline.design/ZCJFcd6hmEDt89SB/scene.splinecode" 
-        />
-         {/* <Spline
-          className="spline 
-            md:spline-1024 
-            sm:spline-100 
-            xs:spline-200 
-            xxs:spline-375
-            mr-10 absolute top-10 right-10"
-            scene="https://prod.spline.design/ZCJFcd6hmEDt89SB/scene.splinecode" 
-        /> */}
-    </div>
-      ) : (
-        <></>
+        </div>
       )}
 
-    </div>
-  )
-}
+      {!loading && (
+        <div className="flex justify-center items-center mt-8">
+          <Image 
+            src='/banner.png' 
+            width={700} 
+            height={300} 
+            alt="Banner image"
+          />
+        </div>
+      )}
 
-export default FindSymptoms
+      {/* Show the error modal if error state is set */}
+      {error && <ErrorModal message={error} onClose={() => setError('')} />}
+    </div>
+  );
+};
+
+export default FindSymptoms;
