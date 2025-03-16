@@ -2,13 +2,20 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { BackgroundGradient } from './ui/background-gradient';
 
-interface ResultProps {
-    diseaes: string,
-    disc: string
-    prevention:string[]
-}
+// interface ResultProps {
+//     diseaes: string,
+//     disc: string[]
+//     prevention:string[]
+// }
 
-const ResultYes: React.FC<ResultProps> = ({diseaes, disc, prevention}) => {
+interface ResultYesProps {
+    diseaes: string | string[];
+    disc: string;
+    prevention: string[];
+  }
+  
+
+const ResultYes: React.FC<ResultYesProps> = ({diseaes, disc, prevention}) => {
 
     console.log('prevention', prevention)
 
@@ -26,8 +33,8 @@ const ResultYes: React.FC<ResultProps> = ({diseaes, disc, prevention}) => {
     };
     const router = useRouter();
 
-    const handleNextDiseasePage = (item: string) => {
-    }
+    // const handleNextDiseasePage = (item: string) => {
+    // }
 
 
   return (
