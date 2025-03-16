@@ -75,7 +75,7 @@ const MySymptoms = () => {
 
   return (
     <div className="bg-bgColor-700 h-screen py-16">
-      <div className="bg-white p-6 m-4 rounded-lg">
+      <div className="bg-white p-2 m-4 rounded-lg">
         <h1 className="text-3xl font-bold text-center mt-8 mb-5">
           Let us check if you have: {disease}
         </h1>
@@ -83,7 +83,7 @@ const MySymptoms = () => {
           Click all the symptoms that you experience right now
         </h4>
 
-        <ToggleGroup type="multiple" className="mt-6 grid grid-cols-5 gap-4 items-center">
+        <ToggleGroup type="multiple" className="mt-6 grid grid-cols-6 gap-4 items-center">
           {symptoms.map((symptom) => (
             <ToggleGroupItem key={symptom} value={symptom} className="mb-8">
               <div className="relative">
