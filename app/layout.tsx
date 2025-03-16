@@ -9,6 +9,7 @@ import {
 } from "@tabler/icons-react";
 import { ShootingStars } from "@/components/ui/shooting-stars";
 import { StarsBackground } from "@/components/ui/stars-background";
+import { FloatingDock } from "@/components/ui/floating-dock";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -60,6 +61,14 @@ export default function RootLayout({
       <body className={inter.className}>
       <ShootingStars/>
       <StarsBackground/>
+      <div className="fixed bottom-10 left-0 right-0">
+        <div className="flex items-center justify-center w-full">
+          <FloatingDock
+            mobileClassName="translate-y-20" // only for demo, remove for production
+            items={links}
+          />
+        </div>
+      </div>
         {children}</body>
     </html>
   );
