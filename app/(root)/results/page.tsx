@@ -1,114 +1,90 @@
-'use client';
-import ResultNo from '@/components/ResultNo';
-import ResultYes from '@/components/ResultYes';
+'use client';  // Add this line at the top
+
+import { Suspense } from 'react';
+import ResultNo from '@/app/components/ResultNo';
+import ResultYes from '@/app/components/ResultYes';
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 const Results = () => {
     const searchParams = useSearchParams();
     const diseaes = searchParams.get('result');
     const pass = searchParams.get('disease');
-    //outer.push(`/results?result=${result}?disease=${disease}`);
-    const[loading,setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    console.log('diseaes', diseaes, pass)
-
+    console.log('diseaes', diseaes, pass);
 
     const [disc, setDisc] = useState('');
     const [prevention, setPrevetion] = useState<string[]>([]);
-    const [other, setOther] = useState<Record<string, boolean> | null>(null);
 
-    const displayResult = async () => {
-        if (diseaes == 'No_Matching'){
-            updateAllergy()
-        }else{
-            const res = await fetch('http://127.0.0.1:5000/getpreventions', {
+    const displayResult = useCallback(async () => {
+        if (diseaes === 'No_Matching') {
+            const res = 'No_Matching';
+            updateAllergy(res);
+        } else {
+            const res = await fetch('https://tharudila245.pythonanywhere.com/getpreventions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     diseases: diseaes,
-                   //predicted_disease : diseaes
                 }),
             });
-    
+
             const data = await res.json();
+            console.log('data.description', data.description);
             setDisc(data.desc);
-            
-            // Ensure prevention is always an array of strings
-            const preventionList = Array.isArray(data.prevntion_list) ? data.prevntion_list : [];
-            setPrevetion(preventionList);
-            
-            updateAllergy();
+            setPrevetion(data.prevntion_list);
+
+            // Ensure 'pass' is a string before calling updateAllergy
+            if (pass) {
+                updateAllergy(pass);
+            } else {
+                console.log('pass is null, skipping updateAllergy');
+            }
+
+            console.log('prevention', data.prevntion_list);
             setLoading(true);
         }
-    };
+    }, [diseaes, pass]);
 
     useEffect(() => {
-        // Only runs on the client side
-        const savedDetails = localStorage.getItem('details');
-        
-        // Check if savedDetails is not null before parsing
-        if (savedDetails) {
-            setOther(JSON.parse(savedDetails));
-        } else {
-            setOther(null);  // Handle the case where no details are stored
-        }
-    
         displayResult();
-    }, []);
+    }, [displayResult]);
 
-    const updateAllergy = () => {
-        // Retrieve the current details from localStorage
-        const savedDetails = localStorage.getItem('details');
+    const updateAllergy = (resl: string) => {
+        const savedDetails = JSON.parse(localStorage.getItem('details') || '{}');
         
-        // Parse the details or fallback to an empty object if null
-        const parsedDetails = savedDetails ? JSON.parse(savedDetails) : {};
-    
-        // Update the 'Allergy' value to false without losing other values
-        parsedDetails['Allergy'] = false;
-    
-        // Save the updated details back to localStorage
-        localStorage.setItem('details', JSON.stringify(parsedDetails));
-    
-        // Update the state to reflect changes
-        setOther(parsedDetails);
+        if (resl !== "No_Matching") {
+            savedDetails[resl] = false;
+        }
+
+        console.log('savedDetails', savedDetails, resl);
+
+        localStorage.setItem('details', JSON.stringify(savedDetails));
     };
 
     return (
         <div>
             {!loading ? (
                 <>
-                 {/* <div>
-                {other && Object.entries(other).map(([key, value]) => (
-                  <>
-                    <p key={key} style={{ color: value ? 'green' : 'red' }}>
-                        {key}: {value ? 'True' : 'False'}
-                    </p>
-                  </>
-                ))}
-            </div> */}
-<ResultNo pass={pass || ''} />
-</>
+                    <ResultNo pass={pass || ''} />
+                </>
             ) : (
                 <>
-                
-
-            {/* <div>
-                {other && Object.entries(other).map(([key, value]) => (
-                    <p key={key} style={{ color: value ? 'green' : 'red' }}>
-                        {key}: {value ? 'True' : 'False'}
-                    </p>
-                ))}
-            </div> */}
-<ResultYes diseaes={diseaes ?? ''} disc={disc} prevention={prevention} />
-</>
+                    <ResultYes diseaes={[diseaes || '']} disc={disc} prevention={prevention} />
+                </>
             )}
-
-            {/* <button onClick={updateAllergy}>Update Allergy to False</button> */}
         </div>
     );
 };
 
-export default Results;
+// Wrap the Results component in Suspense to handle async hooks
+const ResultsPage = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Results />
+  </Suspense>
+);
+
+export default ResultsPage;
