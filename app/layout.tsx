@@ -59,8 +59,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <ShootingStars/>
-      <StarsBackground/>
+      {/* <ShootingStars/>
+      <StarsBackground/> */}
       <div className="fixed bottom-10 left-0 right-0">
         <div className="flex items-center justify-center w-full">
           <FloatingDock
