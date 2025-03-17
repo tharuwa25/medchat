@@ -9,8 +9,8 @@ export default function Home() {
       <div className="relative">
         <Welcome/>
       </div>
-      <WhatIsTHis/>
-      <HowItWork/>
+      {/* <WhatIsTHis/>
+      <HowItWork/> */}
 
       <div className="relative">
       {/* <Footer/> */}
