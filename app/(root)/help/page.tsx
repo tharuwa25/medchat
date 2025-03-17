@@ -15,33 +15,12 @@ const HowItWork = () => {
           </p>
           <div className="grid grid-cols gap-4">
             <Image
-    src='/Step1.png' 
+    src='Step1.png' 
     alt="startup template"
     width={700}
     height={800}
     className='bg-white p-2 rounded-lg object-cover'
             />
-            {/* <Image
-    src='/banner.jpg' 
-    alt="startup template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <Image
-    src='/banner.jpg' 
-    alt="startup template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <Image
-    src='/banner.jpg' 
-    alt="startup template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            /> */}
           </div>
         </div>
       ),
@@ -59,33 +38,13 @@ const HowItWork = () => {
           </p> */}
           <div className="grid grid-cols gap-4">
             <Image
-    src='/Step1.png' 
+    src='Step6.png' 
     alt="hero template"
     width={700}
     height={800}
     className='bg-white p-2 rounded-lg object-cover'
             />
-            {/* <Image
-    src='/banner.jpg' 
-    alt="feature template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <Image
-    src='/banner.jpg' 
-    alt="bento template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            />
-            <Image
-    src='/banner.jpg' 
-    alt="cards template"
-              width={500}
-              height={500}
-              className="rounded-lg object-cover h-20 md:h-44 lg:h-60 w-full shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-            /> */}
+
           </div>
         </div>
       ),
@@ -104,19 +63,11 @@ const HowItWork = () => {
             <div className="flex gap-2 items-center text-white dark:text-neutral-300 text-xs md:text-sm">
               ✅ If you dont't have an idea chose a random one
             </div>
-            {/* <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Random file upload lol
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Himesh Reshammiya Music CD
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Salman Bhai Fan Club registrations open
-            </div> */}
+          
           </div>
           <div className="grid grid-cols gap-4">
             <Image
-    src='/Step2.png' 
+    src='Step2.png' 
     alt="hero template"
     width={700}
     height={800}
@@ -137,7 +88,7 @@ const HowItWork = () => {
           
           <div className="grid grid-cols gap-4">
             <Image
-    src='/Step3.png' 
+    src='Step3.png' 
     alt="hero template"
     width={700}
     height={800}
@@ -174,7 +125,7 @@ const HowItWork = () => {
           </div>
           <div className="grid grid-cols gap-4">
             <Image
-    src='/Step4.png' 
+    src='Step4.png' 
     alt="hero template"
     width={700}
     height={800}
@@ -197,19 +148,11 @@ const HowItWork = () => {
               ✅ Weather your are diagnosis with or not, Here you can chose other illness to check.
             </div>
           
-            {/* <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Random file upload lol
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Himesh Reshammiya Music CD
-            </div>
-            <div className="flex gap-2 items-center text-neutral-700 dark:text-neutral-300 text-xs md:text-sm">
-              ✅ Salman Bhai Fan Club registrations open
-            </div> */}
+           
           </div>
           <div className="grid grid-cols gap-4 ">
             <Image
-    src='/Step5.png' 
+    src='Step5.png' 
     alt="hero template"
               width={700}
               height={800}
@@ -234,14 +177,8 @@ const HowItWork = () => {
       <h2 className='text-white text-3xl text-center'>FAQ's</h2>
 
       <ul>
-        <li>123</li>
-        <li>123</li>
-        <li>123</li>
-        <li>123</li>
-        <li>123</li>
-        <li>123</li>
-        <li>123</li>
-        <li>123</li>
+        <li>devolping....</li>
+        
         
       </ul>
     </div>
