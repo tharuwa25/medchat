@@ -1,3 +1,5 @@
+"use client"; // Add this at the top of the file
+
 import React, { useState } from "react";
 
 const FAQ = () => {
@@ -38,7 +40,6 @@ const FAQ = () => {
 
   return (
     <div className="faq-container">
-      {/* <h1 className="faq-title">Frequently Asked Questions</h1> */}
       <div className="faq-list">
         {faqs.map((faq, index) => (
           <div key={index} className="faq-item">
@@ -62,13 +63,6 @@ const FAQ = () => {
           font-family: Arial, sans-serif;
           border-radius: 8px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .faq-title {
-          text-align: center;
-          font-size: 2.5rem;
-          margin-bottom: 20px;
-          color: #333;
         }
 
         .faq-list {
