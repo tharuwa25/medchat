@@ -51,25 +51,28 @@ const links = [
   
 ];
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+xport default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-      {/* <ShootingStars/>
-      <StarsBackground/> */}
-      <div className="fixed bottom-10 left-0 right-0">
-        <div className="flex items-center justify-center w-full">
-          <FloatingDock
-            mobileClassName="translate-y-20" // only for demo, remove for production
-            items={links}
-          />
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
+      <body>
+        {/* <ShootingStars/> */}
+        {/* <StarsBackground/> */}
+
+        <div className="fixed bottom-10 left-0 right-0 z-50"> {/* Add z-index here */}
+          <div className="flex items-center justify-center w-full">
+            <FloatingDock
+              mobileClassName="translate-y-20" // only for demo, remove for production
+              items={links}
+            />
+          </div>
         </div>
-      </div>
-        {children}</body>
+
+        <main className="main">{children}</main>
+      </body>
     </html>
   );
 }

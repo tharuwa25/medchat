@@ -83,14 +83,12 @@ const MySymptoms = () => {
           Click all the symptoms that you experience right now
         </h4>
 
-        <ToggleGroup type="multiple" className="mt-6 grid grid-cols-6 gap-4 items-center">
+        <ToggleGroup type="multiple" className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
           {symptoms.map((symptom) => (
-            <ToggleGroupItem key={symptom} value={symptom} className="mb-8">
+            <ToggleGroupItem key={symptom} value={symptom} className=' mb-8'>
               <div className="relative">
                 <button
-                  className={`bg-blue-500 text-white p-4 text-xl border-r-2 rounded-xl hover:text-white ${
-                    selectedSymptoms.includes(symptom) ? 'bg-blue-950 text-white' : ''
-                  }`}
+                  className={`bg-blue-500 text-white p-4 text-xl border-r-2 rounded-xl hover:text-white ${selectedSymptoms.includes(symptom) ? 'bg-blue-950 text-white' : ''}`}
                   onClick={() => handleToggle(symptom)}
                 >
                   {symptom.replace(/_/g, ' ').replace(/^\w/, (c) => c.toUpperCase())}

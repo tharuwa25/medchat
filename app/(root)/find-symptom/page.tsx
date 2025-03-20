@@ -35,6 +35,21 @@ const FindSymptoms = () => {
     "My throat feels dry and scratchy, which makes me cough uncontrollably.",
   ];
  
+   // List of images for the slideshow
+   const images = ['/banner.png', '/banner2.png']; // Add your image paths here
+  
+   // State to hold the index of the current image
+   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+   // Use effect to change the image every 5 seconds
+ useEffect(() => {
+   const interval = setInterval(() => {
+     setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
+   }, 5000); // 5000ms = 5 seconds
+
+   // Clear the interval on component unmount
+   return () => clearInterval(interval);
+ }, []);
 
   const getSentence = async () => {
   //  e.preventDefault(); // Prevent form submission
@@ -141,7 +156,7 @@ const FindSymptoms = () => {
             {diseases.map((item, index) => (
               <button
                 key={index}
-                className="bg-white p-4 text-xl rounded-xl mr-8 hover:bg-slate-400"
+                className="bg-white p-4 text-xl rounded-xl mr-8 mb-4 hover:bg-slate-400"
                 onClick={() => handleNextPage(item)}
               >
                 {item}
@@ -157,7 +172,7 @@ const FindSymptoms = () => {
       {!loading && (
         <div className="flex justify-center items-center mt-8">
           <Image 
-            src='banner.png' 
+            src={images[currentImageIndex]} 
             width={700} 
             height={300} 
             alt="Banner image"

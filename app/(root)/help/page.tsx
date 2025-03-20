@@ -1,3 +1,4 @@
+import FAQ from '@/components/FAQ';
 import { Timeline } from '@/components/ui/timeline';
 import Image from 'next/image';
 import React from 'react'
@@ -176,11 +177,7 @@ const HowItWork = () => {
     <div className='bg-bgColor-700'>
       <h2 className='text-white text-3xl text-center'>FAQ's</h2>
 
-      <ul>
-        <li>devolping....</li>
-        
-        
-      </ul>
+      <FAQ/>
     </div>
 
     </div>
