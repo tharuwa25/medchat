@@ -61,7 +61,7 @@ const FindSymptoms = () => {
 
     getSentence();
 
-    const res= await fetch('https://tharudila245.pythonanywhere.com/get_sentence', {
+    const res= await fetch('https://medchat-server-1026438696562.asia-south1.run.app/get_sentence', {
       method : 'POST',
       headers : {
         'Content-Type' : 'application/json',
@@ -81,7 +81,7 @@ const FindSymptoms = () => {
 
     console.log('transformedMessage 3️⃣', transformedMessage)
 
-    const res2 = await fetch('https://tharudila245.pythonanywhere.com/get_diseases_name', {
+    const res2 = await fetch('https://medchat-server-1026438696562.asia-south1.run.app/get_diseases_name', {
       method: 'POST',
       headers:{
         'Content-Type' : 'application/json',
