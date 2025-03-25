@@ -21,8 +21,7 @@ const MySymptoms = () => {
 
   const GetSymptoms = useCallback(async () => {
     if (disease) {
-      //const res = await fetch('https://tharudila245.pythonanywhere.com/get_illess_name', {
-      const res = await fetch(' https://medchat-server-1026438696562.asia-south1.run.app/get_illess_name', {
+      const res = await fetch('https://tharudila245.pythonanywhere.com/get_illess_name', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +49,7 @@ const MySymptoms = () => {
 
   const handleSubmit = async () => {
     const cleanedSymptoms = selectedSymptoms.join(", ");
-    const res = await fetch('https://medchat-server-1026438696562.asia-south1.run.app/predictthediseases', {
+    const res = await fetch('https://tharudila245.pythonanywhere.com/predictthediseases', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
