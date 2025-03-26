@@ -94,20 +94,27 @@ const FindSymptoms = () => {
     const data2 = await res2.json();
     console.log('data 4️⃣', data2)
    // Store diseases in the state
+
+   const diseasesArray = Array.isArray(data2.disease) ? data2.diseases : [];
+
+   if (data2.message === 'Enter correct symptom') {
+    setError(`Currently MEDCHAT doesn't support for your symptom ${transformedMessage}`);
+  } else {
+
    setDiseases(data2.diseases);
 
    // Log the diseases (optional)
    console.log('Diseases:', diseases);
 
-    const details = data2.diseases.reduce((acc: Record<string, boolean>, disease: string) => {
-         acc[disease] = true;
-         return acc;
-       }, {});
+   const details = diseasesArray.reduce((acc: Record<string, boolean>, disease: string) => {
+    acc[disease] = true;
+    return acc;
+  }, {});
   
-      localStorage.setItem('details', JSON.stringify(details));
-      setLoading(true)
-
+  localStorage.setItem('details', JSON.stringify(details));
+  setDiseases(diseasesArray);
   }
+  };
 
   useEffect(() => {
     console.log('Updated diseases:', diseases);
