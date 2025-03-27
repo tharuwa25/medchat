@@ -64,7 +64,7 @@ const Results = () => {
             ) : disease === 'No_Matching' ? (
                 <ResultNo pass={pass || ''} />
             ) : (
-                <ResultYes disease={[disease]} desc={desc} prevention={prevention} />
+                <ResultYes diseaes={[disease]} disc={desc} prevention={prevention} />
             )}
         </div>
     );

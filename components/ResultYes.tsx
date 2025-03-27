@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { BackgroundGradient } from './ui/background-gradient';
 
 interface ResultYesProps {
-    diseaes: string | string[];
+    disease: string | string[]; // Fixed typo
     disc: string;
     prevention: string[];
 }
+
 
 const ResultYes: React.FC<ResultYesProps> = ({ diseaes, disc, prevention }) => {
     const router = useRouter();
