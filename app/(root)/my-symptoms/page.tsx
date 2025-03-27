@@ -130,4 +130,4 @@ const MySymptomsPage = () => (
 );
 
 
-export default MySymptoms;
+export default MySymptomsPage;
