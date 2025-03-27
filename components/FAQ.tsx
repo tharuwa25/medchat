@@ -37,9 +37,10 @@ const FAQ = () => {
   // State to manage the open/close of the accordion
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleAccordion = (index) => {
+  const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+  
 
   return (
     <div className="faq-container">
