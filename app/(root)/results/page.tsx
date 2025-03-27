@@ -1,91 +1,79 @@
-'use client';  // Add this line at the top
+'use client';
 
-import { Suspense } from 'react';
-
+import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
 import ResultNo from '@/components/ResultNo';
 import ResultYes from '@/components/ResultYes';
 
 const Results = () => {
     const searchParams = useSearchParams();
-    const diseaes = searchParams.get('result');
+    const disease = searchParams.get('result');
     const pass = searchParams.get('disease');
-    const [loading, setLoading] = useState(false);
-
-    console.log('diseaes', diseaes, pass);
-
-    const [disc, setDisc] = useState('');
-    const [prevention, setPrevetion] = useState<string[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [desc, setDesc] = useState('');
+    const [prevention, setPrevention] = useState<string[]>([]);
 
     const displayResult = useCallback(async () => {
-        if (diseaes === 'No_Matching') {
-            const res = 'No_Matching';
-            updateAllergy(res);
-        } else {
-            const res = await fetch('https://tharudila245.pythonanywhere.com/getpreventions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    diseases: diseaes,
-                }),
-            });
-
-            const data = await res.json();
-            console.log('data.description', data.description);
-            setDisc(data.desc);
-            setPrevetion(data.prevntion_list);
-
-            // Ensure 'pass' is a string before calling updateAllergy
-            if (pass) {
-                updateAllergy(pass);
-            } else {
-                console.log('pass is null, skipping updateAllergy');
-            }
-
-            console.log('prevention', data.prevntion_list);
-            setLoading(true);
+        if (!disease) {
+            console.warn("No disease result provided.");
+            setLoading(false);
+            return;
         }
-    }, [diseaes, pass]);
+
+        try {
+            if (disease === 'No_Matching') {
+                updateAllergy(disease);
+            } else {
+                const res = await fetch('https://tharudila245.pythonanywhere.com/getpreventions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ diseases: disease }),
+                });
+
+                if (!res.ok) throw new Error("Failed to fetch preventions");
+
+                const data = await res.json();
+                setDesc(data.desc || "No description available.");
+                setPrevention(data.prevntion_list || []);
+                
+                if (pass) updateAllergy(pass);
+            }
+        } catch (error) {
+            console.error("Error fetching preventions:", error);
+        } finally {
+            setLoading(false);
+        }
+    }, [disease, pass]);
 
     useEffect(() => {
         displayResult();
     }, [displayResult]);
 
-    const updateAllergy = (resl: string) => {
+    const updateAllergy = (result: string) => {
         const savedDetails = JSON.parse(localStorage.getItem('details') || '{}');
-        
-        if (resl !== "No_Matching") {
-            savedDetails[resl] = false;
-        }
-
-        console.log('savedDetails', savedDetails, resl);
-
+        if (result !== "No_Matching") savedDetails[result] = false;
         localStorage.setItem('details', JSON.stringify(savedDetails));
     };
 
     return (
         <div>
-            {!loading ? (
-                <>
-                    <ResultNo pass={pass || ''} />
-                </>
+            {loading ? (
+                <div>Loading...</div>
+            ) : disease === 'No_Matching' ? (
+                <ResultNo pass={pass || ''} />
             ) : (
-                <>
-                    <ResultYes diseaes={[diseaes || '']} disc={disc} prevention={prevention} />
-                </>
+                <ResultYes disease={[disease]} desc={desc} prevention={prevention} />
             )}
         </div>
     );
 };
 
-// Wrap the Results component in Suspense to handle async hooks
 const ResultsPage = () => (
-  <Suspense fallback={<div>Loading...</div>}>
-    <Results />
-  </Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
+        <Results />
+    </Suspense>
 );
 
 export default ResultsPage;

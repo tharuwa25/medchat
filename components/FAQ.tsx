@@ -1,46 +1,49 @@
-"use client"; // Add this at the top of the file
-
 import React, { useState } from "react";
 
 const FAQ = () => {
   const faqs = [
     {
-      question: "What is Next.js?",
+      question: "What is this?",
       answer:
-        "Next.js is a React framework that enables you to build static and dynamic websites with React. It provides features like server-side rendering, static site generation, and easy routing.",
+        "This tool helps users quickly identify possible illnesses based on selected symptoms.",
     },
     {
-      question: "How do I create a new Next.js project?",
+      question: "How does the system work?",
       answer:
-        "To create a new Next.js project, run the following command: `npx create-next-app@latest` and follow the setup steps.",
+        "Users select symptoms through a button-based interface, and the system predicts possible illnesses based on medical data.",
     },
     {
-      question: "What is SSR (Server-Side Rendering)?",
+      question: "Is this a replacement for a doctor?",
       answer:
-        "SSR is a feature in Next.js that allows you to render React pages on the server rather than in the browser, which can improve SEO and performance for certain pages.",
+        "No, this is not a medical diagnosis tool. It provides potential matches, but you should always consult a healthcare professional.",
     },
     {
-      question: "What is SSG (Static Site Generation)?",
+      question: "How accurate is the prediction?",
       answer:
-        "SSG is a feature in Next.js that allows you to generate HTML at build time. It is useful for creating pages that don't change often, such as blogs or documentation.",
+        "The system uses symptom-disease mapping and may include machine learning models. Accuracy depends on data quality and user inputs.",
     },
     {
-      question: "How do I deploy my Next.js application?",
+      question: "Do I need to register to use the tool?",
       answer:
-        "You can deploy your Next.js app using platforms like Vercel, Netlify, or any other static hosting platform that supports React applications.",
+        "No",
+    },
+    {
+      question: "Is my data saved?",
+      answer:
+        "The system does not store personal health data permanently.",
     },
   ];
 
   // State to manage the open/close of the accordion
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
-  // Specify the type of 'index' as number
-  const toggleAccordion = (index: number) => {
+  const toggleAccordion = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
     <div className="faq-container">
+      {/* <h1 className="faq-title">Frequently Asked Questions</h1> */}
       <div className="faq-list">
         {faqs.map((faq, index) => (
           <div key={index} className="faq-item">
@@ -64,6 +67,13 @@ const FAQ = () => {
           font-family: Arial, sans-serif;
           border-radius: 8px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-title {
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 20px;
+          color: #333;
         }
 
         .faq-list {
