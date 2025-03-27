@@ -9,7 +9,7 @@ const MySymptoms = () => {
   const router = useRouter();
   const disease = searchParams.get('disease');
   const [symptoms, setSymptoms] = useState<string[]>([]);
-  const [selectedSymptoms, setSelectedSymptoms] = useState<string>(''); // Track selected symptoms as a single string
+  const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const symptomsData = intenseData.symptoms;
 
   //const disease1 = disease
