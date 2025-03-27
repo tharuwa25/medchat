@@ -15,23 +15,31 @@ const MySymptoms = () => {
   //const disease1 = disease
 
   const GetSymptoms = useCallback(async () => {
-    try{
+    try {
       const res = await fetch('https://tharudila245.pythonanywhere.com/get_illess_name', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          diseases_input: disease,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ diseases_input: disease }),
       });
+  
+      if (!res.ok) throw new Error("Failed to fetch symptoms");
+      
       const data = await res.json();
+  
+      if (!data.symptoms || !Array.isArray(data.symptoms)) {
+        console.error("Invalid response format:", data);
+        setSymptoms([]); // Set an empty array to prevent errors
+        return;
+      }
+  
       setSymptoms(data.symptoms);
-      console.log(`Relevant Symptoms for ${disease}: ` + data.symptoms)
-    }catch(error){
+      console.log(`Relevant Symptoms for ${disease}:`, data.symptoms);
+    } catch (error) {
       console.error("Error fetching symptoms:", error);
+      setSymptoms([]); // Prevent `undefined` state
     }
-  },[disease]);
+  }, [disease]);
+  
 
   useEffect(() => {
     if (disease) GetSymptoms();

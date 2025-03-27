@@ -3,13 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { BackgroundGradient } from './ui/background-gradient';
 
 interface ResultYesProps {
-    disease: string | string[]; // Fixed typo
+    disease: string | string[];  
     disc: string;
     prevention: string[];
 }
 
-
-const ResultYes: React.FC<ResultYesProps> = ({ diseaes, disc, prevention }) => {
+const ResultYes: React.FC<ResultYesProps> = ({ disease, disc, prevention }) => {
     const router = useRouter();
     const [other, setOther] = useState<Record<string, boolean>>({});
 
@@ -29,7 +28,7 @@ const ResultYes: React.FC<ResultYesProps> = ({ diseaes, disc, prevention }) => {
                     <h4 className='text-black text-2xl font-bold mt-2'>
                         Based on your answers, you are most likely diagnosed with
                     </h4>
-                    <p className='text-blue-500 font-bold text-4xl mt-6'>{diseaes}</p>
+                    <p className='text-blue-500 font-bold text-4xl mt-6'>{disease}</p>
 
                     <p className='text-sm mt-6 w-3/4 mx-auto'>{disc}</p>
 
