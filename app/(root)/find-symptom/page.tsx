@@ -167,7 +167,7 @@ const FindSymptoms = () => {
       {!loading && (
           <div className="flex justify-center items-center mt-8">
           <Image 
-            src={images[currentImageIndex]} 
+            src={`/${images[currentImageIndex]}`} 
             width={700} 
             height={300} 
             alt="Banner image"
