@@ -1,6 +1,6 @@
 'use client';
 import { useSearchParams, useRouter } from 'next/navigation';
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, Suspense } from 'react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import intenseData from './intense.json';
 
@@ -120,5 +120,14 @@ const MySymptoms = () => {
     </div>
   );
 };
+
+
+// Wrap the page component with Suspense
+const MySymptomsPage = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <MySymptoms />
+  </Suspense>
+);
+
 
 export default MySymptoms;
