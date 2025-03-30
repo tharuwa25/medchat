@@ -59,7 +59,7 @@ const MySymptoms = () => {
 
     console.log('Selected Symptoms:', cleanedSymptoms); // You can handle further logic here
 
-    const res = await fetch('https://medchat-server-1026438696562.asia-south1.run.app/predictthediseases', {
+    const res = await fetch('https://tharudila245.pythonanywhere.com/predictthediseases', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
