@@ -3,7 +3,6 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState, useCallback, Suspense } from 'react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import intenseData from './intense.json';
-require('dotenv').config();
 
 const MySymptoms = () => {
   const searchParams = useSearchParams();
@@ -12,13 +11,14 @@ const MySymptoms = () => {
   const [symptoms, setSymptoms] = useState<string[]>([]);
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const symptomsData = intenseData.symptoms;
-  const apiBaseUrl = process.env.API_BASE_URL; // Load the base URL from the environment variable
+  //const apiBaseUrl = process.env.API_BASE_URL; // Load the base URL from the environment variable
+  const apiBaseUrl = process.env.API_BASE_URL;
 
   //const disease1 = disease
 
   const GetSymptoms = useCallback(async () => {
     try {
-      const res = await fetch('https://tharudila245.pythonanywhere.com/get_illess_name', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/get_illess_name`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ diseases_input: disease }),
@@ -62,7 +62,7 @@ const MySymptoms = () => {
     console.log('Selected Symptoms:', cleanedSymptoms); // You can handle further logic here
 
 
-    const res = await fetch(`${apiBaseUrl}/predictthediseases`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/predictthediseases`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

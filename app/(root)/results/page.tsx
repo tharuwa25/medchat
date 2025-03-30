@@ -24,7 +24,7 @@ const Results = () => {
             if (disease === 'No_Matching') {
                 updateAllergy(disease);
             } else {
-                const res = await fetch('https://tharudila245.pythonanywhere.com/getpreventions', {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/getpreventions`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
