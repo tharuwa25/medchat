@@ -24,7 +24,7 @@ const Results = () => {
             if (disease === 'No_Matching') {
                 updateAllergy(disease);
             } else {
-                const res = await fetch('https://tharudila245.pythonanywhere.com/getpreventions', {
+                const res = await fetch('https://medchat-server-1026438696562.asia-south1.run.app/getpreventions', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
