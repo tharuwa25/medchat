@@ -3,6 +3,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState, useCallback, Suspense } from 'react';
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import intenseData from './intense.json';
+require('dotenv').config();
 
 const MySymptoms = () => {
   const searchParams = useSearchParams();
@@ -11,6 +12,7 @@ const MySymptoms = () => {
   const [symptoms, setSymptoms] = useState<string[]>([]);
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([]);
   const symptomsData = intenseData.symptoms;
+  const apiBaseUrl = process.env.API_BASE_URL; // Load the base URL from the environment variable
 
   //const disease1 = disease
 
@@ -59,7 +61,8 @@ const MySymptoms = () => {
 
     console.log('Selected Symptoms:', cleanedSymptoms); // You can handle further logic here
 
-    const res = await fetch('https://tharudila245.pythonanywhere.com/predictthediseases', {
+
+    const res = await fetch(`${apiBaseUrl}/predictthediseases`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
