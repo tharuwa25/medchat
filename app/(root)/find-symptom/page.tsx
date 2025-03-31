@@ -60,7 +60,7 @@ const FindSymptoms = () => {
 
     //getSentence();
 
-    const res = await fetch('https://tharudila245.pythonanywhere.com/get_sentence', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/get_sentence`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
