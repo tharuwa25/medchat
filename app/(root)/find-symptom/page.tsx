@@ -36,7 +36,7 @@ const FindSymptoms = () => {
   ];
 
     // List of images for the slideshow
-    const images = ['/banner.png', '/banner2.png'];
+    const images = ['banner.png', 'banner2.png'];
   
     // State to hold the index of the current image
     const [currentImageIndex, setCurrentImageIndex] = useState(0);

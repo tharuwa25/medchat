@@ -15,7 +15,7 @@ const HowItWork = () => {
           </p>
           <div className="grid grid-cols gap-4">
             <Image
-              src='/Step1.png' 
+              src='Step1.png' 
               alt="startup template"
               width={700}
               height={800}
@@ -34,7 +34,7 @@ const HowItWork = () => {
           </p>
           <div className="grid grid-cols gap-4">
             <Image
-              src='/Step6.png' 
+              src='Step6.png' 
               alt="hero template"
               width={700}
               height={800}
@@ -61,7 +61,7 @@ const HowItWork = () => {
           </div>
           <div className="grid grid-cols gap-4">
             <Image
-              src='/Step2.png' 
+              src='Step2.png' 
               alt="hero template"
               width={700}
               height={800}
@@ -81,7 +81,7 @@ const HowItWork = () => {
           
           <div className="grid grid-cols gap-4">
             <Image
-              src='/Step3.png' 
+              src='Step3.png' 
               alt="hero template"
               width={700}
               height={800}
@@ -111,7 +111,7 @@ const HowItWork = () => {
           </div>
           <div className="grid grid-cols gap-4">
             <Image
-              src='/Step4.png' 
+              src='Step4.png' 
               alt="hero template"
               width={700}
               height={800}
