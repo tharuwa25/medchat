@@ -135,7 +135,7 @@ const HowItWork = () => {
           </div>
           <div className="grid grid-cols gap-4 ">
             <Image
-              src='/Step5.png' 
+              src='Step5.png' 
               alt="hero template"
               width={700}
               height={800}

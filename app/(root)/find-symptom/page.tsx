@@ -142,27 +142,30 @@ const FindSymptoms = () => {
         onSubmit={getSymptom}
       />
 
-      {loading && (
-        <div className="bg-bgColor-300 m-12 mt-20 rounded-md p-4">
-          <h5 className="font-bold text-2xl text-black mb-6 text-center mt-6">
-            Based on your symptoms, you may have one of these conditions.
-          </h5>
-          <div className="bg-bgColor-200 p-8 border-black rounded-sm border-2 ml-16 mr-16 text-center">
-            {diseases.map((item, index) => (
-              <button
-                key={index}
-                className="bg-white p-4 text-xl rounded-xl mr-8 mb-4 hover:bg-slate-400"
-                onClick={() => handleNextPage(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-          <h5 className="font-bold text-2xl text-black mb-6 text-center mt-6">
-            To get a more accurate diagnosis, we recommend clicking on an illness.
-          </h5>
-        </div>
-      )}
+{loading && (
+  <div className="bg-bgColor-300 m-6 sm:m-12 mt-20 rounded-md p-4">
+    <h5 className="font-bold text-2xl text-black mb-6 text-center mt-6">
+      Based on your symptoms, you may have one of these conditions.
+    </h5>
+    <div className="bg-bgColor-200 p-8 border-black rounded-sm border-2 w-full max-w-[90%] mx-auto text-center">
+      <div className="flex flex-col items-center">
+        {diseases.map((item, index) => (
+          <button
+            key={index}
+            className="bg-white p-4 text-xl rounded-xl w-full sm:w-auto mb-4 hover:bg-slate-400"
+            onClick={() => handleNextPage(item)}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+    </div>
+    <h5 className="font-bold text-2xl text-black mb-6 text-center mt-6">
+      To get a more accurate diagnosis, we recommend clicking on an illness.
+    </h5>
+  </div>
+)}
+
 
       {!loading && (
           <div className="flex justify-center items-center mt-8">
