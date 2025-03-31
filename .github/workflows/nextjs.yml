@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      NEXT_PUBLIC_API_BASE_URL: https://tharudila245.pythonanywhere.com
+      NEXT_PUBLIC_API_BASE_URL: https://medchat-server-1026438696562.asia-south1.run.app
     steps:
       - name: Checkout
         uses: actions/checkout@v4
